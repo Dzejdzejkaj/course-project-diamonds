@@ -17,18 +17,19 @@ dataset <- diamonds
 shinyUI(fluidPage(
     
     # Application title
-    titlePanel("Comparing diamond price and carat with its cut"),
+    titlePanel("Diamond price"),
     
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
         sidebarPanel(
             checkboxGroupInput("name",
-                           label = "Diamond Cut",
+                           label = "Choose at least one diamond cut",
                            choices = unique(dataset$cut),
                            selected = "Premium")
         ),
         # Show a plot of the generated distribution
         mainPanel(
+            h6("The plot below show how diamond price varies across diamond weight ('carat') and cut."),
             plotlyOutput("plot")
         )
     )
